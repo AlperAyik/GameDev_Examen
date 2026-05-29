@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
+    public float health = 100;
 
     void Update()
     {
@@ -18,7 +19,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            FindObjectOfType<GameManager>().GameOver();
+            health -= 10;
+            if(health < 10)
+            {
+                FindObjectOfType<GameManager>().GameOver();
+            } else
+            {
+                FindObjectOfType<HealthManager>().Health();
+            }
+            
         }
     }
 }
