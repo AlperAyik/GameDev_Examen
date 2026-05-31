@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
         if(temp < 1)
         {
             temp = 1;
-            FindObjectOfType<HealthManager>().Health();
+            FindObjectOfType<HealthManager>().HealthBar();
         }
     }
 
@@ -25,13 +25,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            FindObjectOfType<HealthManager>().Health();
+            FindObjectOfType<HealthManager>().TakeHealth();
+        }
+
+        if (collision.gameObject.CompareTag("Enemy2"))
+        {
+            FindObjectOfType<HealthManager>().TakeHealth2();
         }
 
         if(collision.gameObject.CompareTag("PowerUp"))
         {
-            FindObjectOfType<HealthManager>().health += 20;
-            FindObjectOfType<HealthManager>().healthText.text = "Health: " + Mathf.FloorToInt(FindObjectOfType<HealthManager>().health);
+            FindObjectOfType<HealthManager>().AddHealth();
             Destroy(collision.gameObject);
         }
     }

@@ -2,14 +2,11 @@ using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
 {
-    // hello
     public GameObject PowerUpPrefab;
 
     void Start()
     {
         InvokeRepeating("SpawnPowerUp", 5f, 10f);
-        // Iedere 5-10 seconden een powerup spawnen
-        // Ook een powerup die alles asteroids vertraagt en minder maakt
     }
 
     void SpawnPowerUp()

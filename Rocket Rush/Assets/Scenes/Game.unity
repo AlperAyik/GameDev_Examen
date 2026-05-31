@@ -221,7 +221,6 @@ GameObject:
   - component: {fileID: 85595251}
   - component: {fileID: 85595250}
   - component: {fileID: 85595249}
-  - component: {fileID: 85595248}
   - component: {fileID: 85595247}
   m_Layer: 0
   m_Name: Player
@@ -276,33 +275,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 3}
   m_EdgeRadius: 0
---- !u!50 &85595248
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 85595246}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &85595249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 5
-  health: 100
 --- !u!212 &85595250
 SpriteRenderer:
   serializedVersion: 2
@@ -421,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefab: {fileID: 1310686954909980066, guid: 1a57604cc841d2649951416276bc76a1, type: 3}
+  enemy2Prefab: {fileID: 3213749814551866619, guid: 7f5103d932d202540bca0b1f9efeeead, type: 3}
 --- !u!4 &126362906
 Transform:
   m_ObjectHideFlags: 0
@@ -989,6 +961,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758753542}
   m_CullTransparentMesh: 1
+--- !u!1 &1177195046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177195048}
+  - component: {fileID: 1177195047}
+  m_Layer: 0
+  m_Name: PowerUpSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1177195047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177195046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c57f5a99f4b5f64f8e1b3bf4550c08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUpManager
+  PowerUpPrefab: {fileID: 2216074165427314662, guid: 9e39b7d3d91174b4ea1221c8bac922e5, type: 3}
+--- !u!4 &1177195048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177195046}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.53253, y: -1.33095, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1193234998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,6 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeathManager
   healthText: {fileID: 1602721039}
+  health: 110
 --- !u!4 &1193235000
 Transform:
   m_ObjectHideFlags: 0
@@ -1561,8 +1579,8 @@ Transform:
   m_GameObject: {fileID: 1730057928}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34, y: -4.43, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.08, y: -0.035, z: 0}
+  m_LocalScale: {x: 0.5145825, y: 0.2397418, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1620,6 +1638,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1657857688}
+  - {fileID: 1177195048}
   - {fileID: 126362906}
   - {fileID: 85595251}
   - {fileID: 1730057930}
