@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
-    public float health = 100;
+    private float temp = 0;
 
     void Update()
     {
@@ -13,21 +13,26 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = new Vector3(moveX, moveY, 0);
 
         transform.Translate(movement * speed * Time.deltaTime);
+
+        if(temp < 1)
+        {
+            temp = 1;
+            FindObjectOfType<HealthManager>().Health();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            health -= 10;
-            if(health < 10)
-            {
-                FindObjectOfType<GameManager>().GameOver();
-            } else
-            {
-                FindObjectOfType<HealthManager>().Health();
-            }
-            
+            FindObjectOfType<HealthManager>().Health();
+        }
+
+        if(collision.gameObject.CompareTag("PowerUp"))
+        {
+            FindObjectOfType<HealthManager>().health += 20;
+            FindObjectOfType<HealthManager>().healthText.text = "Health: " + Mathf.FloorToInt(FindObjectOfType<HealthManager>().health);
+            Destroy(collision.gameObject);
         }
     }
 }
