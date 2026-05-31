@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
-public class GameManager : MonoBehaviour
+public class TerugNaarMenu : MonoBehaviour
 {
     public ScoreManager scoreManager;
-
-    public void GameOver()
+    public void TerugMenu()
     {
         scoreManager = FindFirstObjectByType<ScoreManager>();
         
@@ -17,11 +17,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        Invoke("RestartGame", 1f);
-    }
-
-    void RestartGame()
-    {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("MainMenu");
     }
 }
