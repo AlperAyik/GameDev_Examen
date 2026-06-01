@@ -26,13 +26,13 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             FindObjectOfType<HealthManager>().TakeHealth();
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
         }
 
         if (collision.gameObject.CompareTag("Enemy2"))
         {
             FindObjectOfType<HealthManager>().TakeHealth2();
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
         }
 
         if(collision.gameObject.CompareTag("PowerUp"))
