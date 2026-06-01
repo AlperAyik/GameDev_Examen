@@ -80,7 +80,7 @@ Overleef zo lang mogelijk en behaal een zo hoog mogelijke score.
 ### Repository clonen
 
 ```bash
-git clone [repository-url]
+git clone https://github.com/AlperAyik/GameDev_Examen.git
 ```
 
 ### Project openen
