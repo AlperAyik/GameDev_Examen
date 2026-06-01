@@ -4,7 +4,9 @@
 
 Rocket Escape is een 2D survival game ontwikkeld in **Unity 6** met **C#**.
 
-In deze game bestuurt de speler een ruimteschip en moet hij zo lang mogelijk overleven door asteroïden en vijanden te ontwijken. Tijdens het spelen verschijnen power-ups die health teruggeven. Naarmate de score stijgt, wordt de game steeds moeilijker door extra vijanden en nieuwe enemy types.
+In deze game bestuurt de speler een ruimteschip en moet hij zo lang mogelijk overleven door asteroïden en vijanden te ontwijken. Tijdens het spelen kan de speler raketten afvuren om vijanden te vernietigen. Naarmate de score stijgt, wordt de game steeds moeilijker door extra vijanden en nieuwe enemy types.
+
+De speler beschikt over een health systeem. Botsingen met vijanden verminderen de health. Wanneer de health op 0 komt, eindigt het spel en wordt de behaalde highscore opgeslagen.
 
 ---
 
@@ -12,11 +14,12 @@ In deze game bestuurt de speler een ruimteschip en moet hij zo lang mogelijk ove
 
 ### Doel van het spel
 
-Overleef zo lang mogelijk en behaal een zo hoog mogelijke score.
+Overleef zo lang mogelijk, vernietig vijanden en behaal een zo hoog mogelijke score.
 
 ### Features
 
 * Player movement
+* Missile shooting systeem
 * Score systeem
 * Highscore systeem
 * Health systeem
@@ -27,6 +30,13 @@ Overleef zo lang mogelijk en behaal een zo hoog mogelijke score.
 * Game Over systeem
 * Explosion effecten
 * Best Education branding
+
+### Score Systeem
+
+| Actie                 | Punten                     |
+| --------------------- | -------------------------- |
+| Overleven             | Score loopt automatisch op |
+| Asteroïde vernietigen | +30 punten                 |
 
 ### Moeilijkheidsgraad
 
@@ -67,6 +77,20 @@ Overleef zo lang mogelijk en behaal een zo hoog mogelijke score.
 * PlayerPrefs
 * InvokeRepeating()
 * Random spawning
+* Projectile spawning
+* Destroy()
+* Input.GetAxis()
+* Input.GetKeyDown()
+
+---
+
+## 🎯 Besturing
+
+| Toets           | Actie           |
+| --------------- | --------------- |
+| W / A / S / D   | Bewegen         |
+| Pijltjestoetsen | Bewegen         |
+| Spatiebalk      | Missile afvuren |
 
 ---
 
@@ -80,7 +104,7 @@ Overleef zo lang mogelijk en behaal een zo hoog mogelijke score.
 ### Repository clonen
 
 ```bash
-git clone [repository-url]
+git clone https://github.com/AlperAyik/GameDev_Examen.git
 ```
 
 ### Project openen
@@ -155,11 +179,15 @@ Assets
 │   ├── GameManager.cs
 │   ├── HealthManager.cs
 │   ├── ScoreManager.cs
-│   └── MainMenu.cs
+│   ├── MainMenu.cs
+│   ├── Missile.cs
+│   └── MissileSpawner.cs
 │
 ├── Scenes
 │   ├── MainMenu.unity
 │   └── Game.unity
+│
+├── Prefabs
 │
 ├── Sprites
 │

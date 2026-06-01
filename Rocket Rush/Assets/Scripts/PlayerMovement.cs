@@ -24,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
             temp = 1;
             FindObjectOfType<HealthManager>().HealthBar();
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            FindObjectOfType<MissileManager>().ShootMissile();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
