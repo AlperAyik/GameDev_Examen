@@ -394,6 +394,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefab: {fileID: 1310686954909980066, guid: 1a57604cc841d2649951416276bc76a1, type: 3}
   enemy2Prefab: {fileID: 3213749814551866619, guid: 7f5103d932d202540bca0b1f9efeeead, type: 3}
+  enemySpaceShipPrefab: {fileID: 7528041793826516587, guid: 6b9c9fa866712794bbd2a07ead5f44c3, type: 3}
+  SlowDown: 0
 --- !u!4 &126362906
 Transform:
   m_ObjectHideFlags: 0
@@ -515,7 +517,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -997,7 +999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -449.5, y: 185.74998}
+  m_AnchoredPosition: {x: -887, y: 277}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758753544
@@ -1130,6 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpManager
   PowerUpPrefab: {fileID: 2216074165427314662, guid: 9e39b7d3d91174b4ea1221c8bac922e5, type: 3}
+  SlowDownPrefab: {fileID: 4489166526174326216, guid: c89651c2108411c4d978610c9850e5d2, type: 3}
 --- !u!4 &1177195048
 Transform:
   m_ObjectHideFlags: 0
@@ -1395,7 +1398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -449.5, y: 235.75}
+  m_AnchoredPosition: {x: -887, y: 348.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602721039
@@ -1625,7 +1628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: 225.75}
+  m_AnchoredPosition: {x: 888, y: 338.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1633698947
@@ -1852,8 +1855,8 @@ Transform:
   m_GameObject: {fileID: 1730057928}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: -0.035, z: 0}
-  m_LocalScale: {x: 0.5145825, y: 0.2397418, z: 1}
+  m_LocalPosition: {x: 0.0866, y: 0.0617, z: 0}
+  m_LocalScale: {x: 0.79628295, y: 0.31592187, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

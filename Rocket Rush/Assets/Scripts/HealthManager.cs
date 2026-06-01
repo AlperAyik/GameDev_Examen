@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using Unity.Mathematics;
+using System.Threading.Tasks;
 
 public class HealthManager : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class HealthManager : MonoBehaviour
             health -= 10;
             healthText.text = "Health: " + Mathf.FloorToInt(health);   
         } else {
+            health = 0;
+            healthText.text = "Health: " + Mathf.FloorToInt(health); 
             FindObjectOfType<GameManager>().GameOver();
         }
     }
@@ -24,8 +28,17 @@ public class HealthManager : MonoBehaviour
             health -= 20;
             healthText.text = "Health: " + Mathf.FloorToInt(health);   
         } else {
+            health = 0;
+            healthText.text = "Health: " + Mathf.FloorToInt(health);  
             FindObjectOfType<GameManager>().GameOver();
         }
+    }
+    public void TakeHealth3(){
+        health = 0;
+        healthText.text = "Health: " + Mathf.FloorToInt(health);   
+        Task.Delay(1500);
+        FindObjectOfType<GameManager>().GameOver();
+        
     }
     public void AddHealth(){
         health += 20;

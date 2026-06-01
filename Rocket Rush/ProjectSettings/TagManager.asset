@@ -8,6 +8,8 @@ TagManager:
   - Projectile
   - PowerUp
   - Enemy2
+  - EnemySpaceShip
+  - SlowDownPowerup
   layers:
   - Default
   - TransparentFX

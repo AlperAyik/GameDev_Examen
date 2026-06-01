@@ -3,7 +3,6 @@ using UnityEngine;
 public class PowerUpManager : MonoBehaviour
 {
     public GameObject PowerUpPrefab;
-
     void Start()
     {
         InvokeRepeating("SpawnPowerUp", 5f, 10f);
@@ -11,10 +10,13 @@ public class PowerUpManager : MonoBehaviour
 
     void SpawnPowerUp()
     {
-        float randomX = Random.Range(-8f, 8f);
+        if(FindAnyObjectByType<HealthManager>().health <= 80)
+        {
+            float randomX = Random.Range(-8f, 8f);
 
-        Vector2 spawnPosition = new Vector2(randomX, 6f);
+            Vector2 spawnPosition = new Vector2(randomX, 6f);
 
-        Instantiate(PowerUpPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(PowerUpPrefab, spawnPosition, Quaternion.identity);
+        }
     }
 }

@@ -14,6 +14,11 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(movement * speed * Time.deltaTime);
 
+        float clampedX = Mathf.Clamp(transform.position.x, -15f, 15f);
+        float clampedY = Mathf.Clamp(transform.position.y, -5f, 5f);
+
+        transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+
         if(temp < 1)
         {
             temp = 1;
@@ -33,6 +38,12 @@ public class PlayerMovement : MonoBehaviour
         {
             FindObjectOfType<HealthManager>().TakeHealth2();
             Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
+        }
+
+        if (collision.gameObject.CompareTag("EnemySpaceShip"))
+        {
+            FindObjectOfType<HealthManager>().TakeHealth3();
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
 
         if(collision.gameObject.CompareTag("PowerUp"))
