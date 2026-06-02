@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -18,20 +17,23 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if(FindObjectOfType<ScoreManager>().score > 100 && !speedIncreased)
+        if (FindObjectOfType<ScoreManager>().score > 100 && !speedIncreased)
         {
             speedIncreased = true;
             CancelInvoke("SpawnEnemy");
             InvokeRepeating("SpawnEnemy", 1f, 0.5f);
-        } 
-        if(FindObjectOfType<ScoreManager>().score > 500 && !spawnEnemy2)
+        }
+
+        if (FindObjectOfType<ScoreManager>().score > 500 && !spawnEnemy2)
         {
             spawnEnemy2 = true;
             InvokeRepeating("SpawnEnemy2", 1f, 0.5f);
         }
-        if(FindObjectOfType<ScoreManager>().score > 1000 && !SpawnSpaceShipBool)
+
+        if (FindObjectOfType<ScoreManager>().score > 1000 && !SpawnSpaceShipBool)
         {
             SpawnSpaceShipBool = true;
+
             CancelInvoke("SpawnEnemy");
             CancelInvoke("SpawnEnemy2");
 
@@ -41,29 +43,65 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    float GetHorizontalExtent()
+    {
+        float vertExtent = Camera.main.orthographicSize;
+        return vertExtent * Screen.width / (float)Screen.height;
+    }
+
     void SpawnEnemy()
     {
-        float randomX = Random.Range(-15f, 15f);
+        float horzExtent = GetHorizontalExtent();
 
-        Vector2 spawnPosition = new Vector2(randomX, 8f);
+        float randomX = Random.Range(
+            -horzExtent + 1f,
+            horzExtent - 1f
+        );
+
+        float spawnY = Camera.main.orthographicSize + 1f;
+
+        Vector2 spawnPosition = new Vector2(
+            randomX,
+            spawnY
+        );
 
         Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
     }
 
     void SpawnEnemy2()
     {
-        float randomX = Random.Range(-15f, 15f);
+        float horzExtent = GetHorizontalExtent();
 
-        Vector2 spawnPosition = new Vector2(randomX, 8f);
+        float randomX = Random.Range(
+            -horzExtent + 1f,
+            horzExtent - 1f
+        );
+
+        float spawnY = Camera.main.orthographicSize + 1f;
+
+        Vector2 spawnPosition = new Vector2(
+            randomX,
+            spawnY
+        );
 
         Instantiate(enemy2Prefab, spawnPosition, Quaternion.identity);
     }
 
     void SpawnSpaceShip()
     {
-        float randomX = Random.Range(-15f, 15f);
+        float horzExtent = GetHorizontalExtent();
 
-        Vector2 spawnPosition = new Vector2(randomX, 8f);
+        float randomX = Random.Range(
+            -horzExtent + 1f,
+            horzExtent - 1f
+        );
+
+        float spawnY = Camera.main.orthographicSize + 1f;
+
+        Vector2 spawnPosition = new Vector2(
+            randomX,
+            spawnY
+        );
 
         Instantiate(enemySpaceShipPrefab, spawnPosition, Quaternion.identity);
     }

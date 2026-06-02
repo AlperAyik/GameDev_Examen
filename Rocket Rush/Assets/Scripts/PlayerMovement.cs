@@ -6,30 +6,46 @@ public class PlayerMovement : MonoBehaviour
     private float temp = 0;
     public GameObject explosionPrefab;
     void Update()
+{
+    float moveX = Input.GetAxis("Horizontal");
+    float moveY = Input.GetAxis("Vertical");
+
+    Vector3 movement = new Vector3(moveX, moveY, 0);
+
+    transform.Translate(movement * speed * Time.deltaTime);
+
+    float vertExtent = Camera.main.orthographicSize;
+    float horzExtent = vertExtent * Screen.width / (float)Screen.height;
+
+    float clampedX = Mathf.Clamp(
+        transform.position.x,
+        -horzExtent + 0.5f,
+        horzExtent - 0.5f
+    );
+
+    float clampedY = Mathf.Clamp(
+        transform.position.y,
+        -vertExtent + 0.5f,
+        vertExtent - 0.5f
+    );
+
+    transform.position = new Vector3(
+        clampedX,
+        clampedY,
+        transform.position.z
+    );
+
+    if(temp < 1)
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveX, moveY, 0);
-
-        transform.Translate(movement * speed * Time.deltaTime);
-
-        float clampedX = Mathf.Clamp(transform.position.x, -15f, 15f);
-        float clampedY = Mathf.Clamp(transform.position.y, -5f, 5f);
-
-        transform.position = new Vector3(clampedX, clampedY, transform.position.z);
-
-        if(temp < 1)
-        {
-            temp = 1;
-            FindObjectOfType<HealthManager>().HealthBar();
-        }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            FindObjectOfType<MissileManager>().ShootMissile();
-        }
+        temp = 1;
+        FindObjectOfType<HealthManager>().HealthBar();
     }
+
+    if(Input.GetKeyDown(KeyCode.Space))
+    {
+        FindObjectOfType<MissileManager>().ShootMissile();
+    }
+}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
